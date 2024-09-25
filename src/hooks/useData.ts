@@ -18,6 +18,7 @@ const useFetchData = <T>(
 
   useEffect(
     () => {
+      setIsLoading(true);
       const controller = new AbortController();
 
       apiClient
