@@ -1,10 +1,5 @@
 import useFetchData from "./useData";
-
-export interface Platform {
-  id: number;
-  name: string;
-  slug: string;
-}
+import { Platform } from "./useGames";
 
 const usePlatforms = () => useFetchData<Platform>("/platforms/lists/parents");
 
