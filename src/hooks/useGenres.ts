@@ -1,5 +1,4 @@
-import useFetchData from "./useData";
-
+import genres from "../data/genres.ts";
 export interface Genre {
   id: number;
   name: string;
@@ -8,6 +7,6 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = () => useFetchData<Genre>("/genres");
+const useGenres = () => ({ data: genres, isLoading: false, error: null });
 
 export default useGenres;
