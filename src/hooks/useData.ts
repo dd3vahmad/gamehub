@@ -1,47 +1,21 @@
-import { useEffect, useState } from "react";
-import apiClient, { CanceledError } from "../services/api-client";
 import { AxiosRequestConfig } from "axios";
-
-interface FetchResponse<T> {
-  count: number;
-  results: T[];
-}
+import { useQuery } from "@tanstack/react-query";
+import APIClient, { FetchResponse } from "../services/api-client";
 
 const useFetchData = <T>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
-  deps?: any[]
+  staleTime: number = 10 * 1000,
+  initialData: T[] = []
 ) => {
-  const [data, setData] = useState<T[]>([]);
-  const [error, setError] = useState("");
-  const [isLoading, setIsLoading] = useState(true);
+  const apiClient = new APIClient<T>(endpoint, requestConfig);
 
-  useEffect(
-    () => {
-      setIsLoading(true);
-      const controller = new AbortController();
-
-      apiClient
-        .get<FetchResponse<T>>(endpoint, {
-          signal: controller.signal,
-          ...requestConfig,
-        })
-        .then((res) => {
-          setData(res.data.results);
-          setIsLoading(false);
-        })
-        .catch((err) => {
-          if (err instanceof CanceledError) return;
-          setError(err.message);
-          setIsLoading(false);
-        });
-
-      return () => controller.abort();
-    },
-    deps ? [...deps] : []
-  );
-
-  return { data, error, isLoading };
+  return useQuery<FetchResponse<T>, Error>({
+    queryKey: [endpoint],
+    queryFn: apiClient.getAll,
+    staleTime,
+    initialData: { count: initialData.length, results: initialData },
+  });
 };
 
 export default useFetchData;
