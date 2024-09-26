@@ -1,5 +1,7 @@
 import platforms from "../data/platforms";
+import useFetchData from "./useData";
 
-const usePlatforms = () => ({ data: platforms, isLoading: false, error: null });
+const usePlatforms = () =>
+  useFetchData("/platforms/lists/parents", {}, 24 * 60 * 60 * 1000, platforms);
 
 export default usePlatforms;
