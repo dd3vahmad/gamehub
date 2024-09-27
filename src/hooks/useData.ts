@@ -8,11 +8,13 @@ const useFetchData = <T>(
   staleTime: number = 10 * 1000,
   initialData: T[] = []
 ) => {
-  const apiClient = new APIClient<T>(endpoint, requestConfig);
+  const apiClient = new APIClient<T>(endpoint);
 
   return useQuery<FetchResponse<T>, Error>({
     queryKey: [endpoint, requestConfig],
-    queryFn: apiClient.getAll,
+    queryFn: requestConfig
+      ? () => apiClient.getAll(requestConfig)
+      : apiClient.getAll,
     staleTime,
     initialData: { count: initialData.length, results: initialData },
   });

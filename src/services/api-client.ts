@@ -16,18 +16,16 @@ const controller = new AbortController();
 
 class APIClient<T> {
   endpoint: string;
-  requestConfig: AxiosRequestConfig;
 
-  constructor(endpoint: string, requestConfig?: AxiosRequestConfig) {
+  constructor(endpoint: string) {
     this.endpoint = endpoint;
-    this.requestConfig = requestConfig || {};
   }
 
-  getAll = async () => {
+  getAll = async (config: AxiosRequestConfig) => {
     return axiosInstance
       .get<FetchResponse<T>>(this.endpoint, {
         signal: controller.signal,
-        ...this.requestConfig,
+        ...config,
       })
       .then((res) => res.data);
   };
