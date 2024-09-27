@@ -1,5 +1,5 @@
-import { AxiosRequestConfig } from "axios";
 import { useQuery } from "@tanstack/react-query";
+import { AxiosRequestConfig } from "axios";
 import APIClient, { FetchResponse } from "../services/api-client";
 
 const useFetchData = <T>(
