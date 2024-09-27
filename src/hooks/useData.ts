@@ -12,9 +12,7 @@ const useFetchData = <T>(
 
   return useQuery<FetchResponse<T>, Error>({
     queryKey: [endpoint, requestConfig],
-    queryFn: requestConfig
-      ? () => apiClient.getAll(requestConfig)
-      : apiClient.getAll,
+    queryFn: apiClient.getAll,
     staleTime,
     initialData: { count: initialData.length, results: initialData },
   });

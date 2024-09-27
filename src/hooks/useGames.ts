@@ -1,5 +1,5 @@
 import { GameQuery } from "../App";
-import useFetchData from "./useData";
+import useFetchInfiniteData from "./useInfiniteData";
 import { Platform } from "./usePlatforms";
 
 export interface Game {
@@ -12,7 +12,7 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) =>
-  useFetchData<Game>(
+  useFetchInfiniteData<Game>(
     "/games",
     {
       params: {
@@ -22,8 +22,7 @@ const useGames = (gameQuery: GameQuery) =>
         search: gameQuery.searchText,
       },
     },
-    10 * 1000,
-    []
+    10 * 1000
   );
 
 export default useGames;
