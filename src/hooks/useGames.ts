@@ -16,13 +16,14 @@ const useGames = (gameQuery: GameQuery) =>
     "/games",
     {
       params: {
-        genres: gameQuery.genre?.id,
-        parent_platforms: gameQuery.platform?.id,
+        genres: gameQuery.genreId,
+        parent_platforms: gameQuery.platformId,
         ordering: gameQuery.sortOrder,
         search: gameQuery.searchText,
       },
     },
-    24 * 60 * 60 * 1000
+    24 * 60 * 60 * 1000,
+    gameQuery
   );
 
 export default useGames;
