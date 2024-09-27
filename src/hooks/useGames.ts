@@ -22,7 +22,7 @@ const useGames = (gameQuery: GameQuery) =>
         search: gameQuery.searchText,
       },
     },
-    10 * 1000
+    24 * 60 * 60 * 1000
   );
 
 export default useGames;
