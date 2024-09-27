@@ -1,3 +1,4 @@
+import ms from "ms";
 import genres from "../data/genres.ts";
 import useFetchData from "./useData.ts";
 export interface Genre {
@@ -8,7 +9,6 @@ export interface Genre {
   image_background: string;
 }
 
-const useGenres = () =>
-  useFetchData<Genre>("/genres", {}, 24 * 60 * 60 * 1000, genres);
+const useGenres = () => useFetchData<Genre>("/genres", {}, ms("24h"), genres);
 
 export default useGenres;

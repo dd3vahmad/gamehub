@@ -1,3 +1,4 @@
+import ms from "ms";
 import platforms from "../data/platforms";
 import useFetchData from "./useData";
 
@@ -8,11 +9,6 @@ export interface Platform {
 }
 
 const usePlatforms = () =>
-  useFetchData<Platform>(
-    "/platforms/lists/parents",
-    {},
-    24 * 60 * 60 * 1000,
-    platforms
-  );
+  useFetchData<Platform>("/platforms/lists/parents", {}, ms("24h"), platforms);
 
 export default usePlatforms;

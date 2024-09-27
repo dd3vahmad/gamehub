@@ -1,3 +1,4 @@
+import ms from "ms";
 import { GameQuery } from "../App";
 import useFetchInfiniteData from "./useInfiniteData";
 import { Platform } from "./usePlatforms";
@@ -22,7 +23,7 @@ const useGames = (gameQuery: GameQuery) =>
         search: gameQuery.searchText,
       },
     },
-    24 * 60 * 60 * 1000,
+    ms("24h"),
     gameQuery
   );
 
