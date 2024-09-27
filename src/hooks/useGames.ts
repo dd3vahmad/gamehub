@@ -17,13 +17,18 @@ export interface Game {
 }
 
 const useGames = (gameQuery: GameQuery) =>
-  useFetchData<Game>("/games", {
-    params: {
-      genres: gameQuery.genre?.id,
-      platforms: gameQuery.platform?.id,
-      ordering: gameQuery.sortOrder,
-      search: gameQuery.searchText,
+  useFetchData<Game>(
+    "/games",
+    {
+      params: {
+        genres: gameQuery.genre?.id,
+        parent_platforms: gameQuery.platform?.id,
+        ordering: gameQuery.sortOrder,
+        search: gameQuery.searchText,
+      },
     },
-  });
+    10 * 1000,
+    []
+  );
 
 export default useGames;

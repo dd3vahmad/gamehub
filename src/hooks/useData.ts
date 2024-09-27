@@ -11,7 +11,7 @@ const useFetchData = <T>(
   const apiClient = new APIClient<T>(endpoint, requestConfig);
 
   return useQuery<FetchResponse<T>, Error>({
-    queryKey: [endpoint],
+    queryKey: [endpoint, requestConfig],
     queryFn: apiClient.getAll,
     staleTime,
     initialData: { count: initialData.length, results: initialData },
