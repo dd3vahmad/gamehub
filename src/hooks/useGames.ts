@@ -1,7 +1,7 @@
 import ms from "ms";
-import { GameQuery } from "../App";
 import useFetchInfiniteData from "./useInfiniteData";
 import { Platform } from "./usePlatforms";
+import useGameQueryStore from "../stores/gameStore";
 
 export interface Game {
   id: number;
@@ -12,8 +12,10 @@ export interface Game {
   rating_top: number;
 }
 
-const useGames = (gameQuery: GameQuery) =>
-  useFetchInfiniteData<Game>(
+const useGames = () => {
+  const gameQuery = useGameQueryStore((s) => s.gameQuery);
+
+  return useFetchInfiniteData<Game>(
     "/games",
     {
       params: {
@@ -26,5 +28,6 @@ const useGames = (gameQuery: GameQuery) =>
     ms("24h"),
     gameQuery
   );
+};
 
 export default useGames;

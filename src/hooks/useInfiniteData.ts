@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from "axios";
 import { useInfiniteQuery } from "@tanstack/react-query";
 import APIClient, { FetchResponse } from "../services/api-client";
-import { GameQuery } from "../App";
+import { GameQuery } from "../stores/gameStore";
 
 const useFetchInfiniteData = <T>(
   endpoint: string,
