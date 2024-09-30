@@ -4,21 +4,20 @@ import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   return (
-    <div>
-      <Grid
-        templateAreas={{
-          base: `"nav" "main"`,
-          lg: `"nav" "main"`,
-        }}
-      >
-        <GridItem area={"nav"}>
-          <Navbar />
-        </GridItem>
-        <GridItem area={"main"} paddingX={5}>
-          <Outlet />
-        </GridItem>
-      </Grid>
-    </div>
+    <Grid
+      templateAreas={{
+        base: `"nav" "main"`,
+        lg: `"nav" "main"`,
+      }}
+    >
+      <GridItem area={"nav"}>
+        <Navbar />
+      </GridItem>
+
+      <GridItem area={"main"} paddingX={5}>
+        <Outlet />
+      </GridItem>
+    </Grid>
   );
 };
 

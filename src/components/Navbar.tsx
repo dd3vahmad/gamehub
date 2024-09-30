@@ -1,15 +1,26 @@
-import { HStack, Image } from "@chakra-ui/react";
+import { Box, Flex, Image } from "@chakra-ui/react";
 import logo from "../assets/logo.webp";
 import ColorModeSwitch from "./ColorModeSwitch";
 import SearchInput from "./SearchInput";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
+
   return (
-    <HStack p="10px">
-      <Image src={logo} boxSize={"60px"} alt="Gaymz Logo" />
-      <SearchInput />
+    <Flex p="10px" alignItems="center" gap={2}>
+      <Image
+        onClick={() => navigate("/")}
+        src={logo}
+        boxSize={"60px"}
+        alt="Gaymz Logo"
+        cursor="pointer"
+      />
+      <Box flex="1">
+        <SearchInput />
+      </Box>
       <ColorModeSwitch />
-    </HStack>
+    </Flex>
   );
 };
 
