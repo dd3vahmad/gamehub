@@ -1,13 +1,8 @@
 import ms from "ms";
-import { Game } from "./useGames.ts";
 import useFetchSingleData from "./useSingleData.ts";
-
-export interface GameDetails extends Game {
-  description: string;
-  description_raw: string;
-}
+import { Game } from "../entities/Game.ts";
 
 const useGameDetails = (slug: string) =>
-  useFetchSingleData<GameDetails>(`/games/${slug}`, {}, ms("24h"));
+  useFetchSingleData<Game>(`/games/${slug}`, {}, ms("24h"));
 
 export default useGameDetails;

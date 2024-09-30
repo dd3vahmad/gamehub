@@ -1,17 +1,7 @@
 import ms from "ms";
 import useFetchInfiniteData from "./useInfiniteData";
-import { Platform } from "./usePlatforms";
 import useGameQueryStore from "../stores/gameStore";
-
-export interface Game {
-  id: number;
-  name: string;
-  slug: string;
-  background_image: string;
-  parent_platforms: { platform: Platform }[];
-  metacritic: number;
-  rating_top: number;
-}
+import { Game } from "../entities/Game";
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
