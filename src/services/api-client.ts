@@ -30,6 +30,14 @@ class APIClient<T> {
       })
       .then((res) => res.data);
   };
+
+  get = async () => {
+    return axiosInstance
+      .get<T>(this.endpoint, {
+        signal: controller.signal,
+      })
+      .then((res) => res.data);
+  };
 }
 
 export { CanceledError };
