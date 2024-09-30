@@ -1,7 +1,7 @@
 import ms from "ms";
 import useFetchInfiniteData from "./useInfiniteData";
 import useGameQueryStore from "../stores/gameStore";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);

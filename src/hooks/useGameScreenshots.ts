@@ -1,4 +1,4 @@
-import { Screenshot } from "../entities/Screenshot";
+import Screenshot from "../entities/Screenshot";
 import useFetchData from "./useData";
 import ms from "ms";
 

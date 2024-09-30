@@ -1,5 +1,5 @@
 import ms from "ms";
-import { Trailer } from "../entities/Trailer";
+import Trailer from "../entities/Trailer";
 import useFetchData from "./useData";
 
 const useGameTrailers = (id: number) =>
