@@ -13,7 +13,11 @@ import getCroppedImageUrl from "../services/image-url";
 import useGameQueryStore from "../stores/gameStore";
 import useGenre from "../hooks/useGenre";
 
-const GenreList = () => {
+interface Props {
+  onClose?: () => void;
+}
+
+const GenreList = ({ onClose }: Props) => {
   const selectedGenreId = useGameQueryStore((s) => s.gameQuery.genreId);
   const setSelectedGenreId = useGameQueryStore((s) => s.setGenreId);
   const { data: genres, isLoading, error } = useGenres();
@@ -30,7 +34,7 @@ const GenreList = () => {
       </Heading>
       <List>
         {genres?.results.map((genre: Genre) => (
-          <ListItem key={genre.id} paddingY={"5px"}>
+          <ListItem key={genre.id} paddingY={"5px"} onClick={onClose}>
             <HStack>
               <Image
                 boxSize={"32px"}
