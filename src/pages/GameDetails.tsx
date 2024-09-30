@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import useGameDetails from "../hooks/useGameDetails";
-import { Grid, GridItem, Heading, Spinner, Text } from "@chakra-ui/react";
+import { Grid, GridItem, Heading, Spinner } from "@chakra-ui/react";
+import ExpandableText from "../components/ExpandableText";
 
 const GameDetails = () => {
   const { slug } = useParams();
@@ -15,7 +16,7 @@ const GameDetails = () => {
     <Grid>
       <GridItem>
         <Heading>{game.name}</Heading>
-        <Text>{game.description_raw}</Text>
+        <ExpandableText content={game.description_raw} limit={300} />
       </GridItem>
     </Grid>
   );
