@@ -8,7 +8,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   return (
-    <Flex p="10px" alignItems="center" gap={2}>
+    <Flex p="10px" alignItems="center" gap={5}>
       <Image
         onClick={() => navigate("/")}
         src={logo}

@@ -1,4 +1,5 @@
-import { HStack, Switch, Text, useColorMode } from "@chakra-ui/react";
+import { HStack, Icon, Switch, useColorMode } from "@chakra-ui/react";
+import { BsMoonFill, BsSun } from "react-icons/bs";
 
 const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
@@ -10,7 +11,11 @@ const ColorModeSwitch = () => {
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
-      <Text whiteSpace={"nowrap"}>Dark Mode</Text>
+      <Icon
+        marginRight={2}
+        as={colorMode === "dark" ? BsMoonFill : BsSun}
+        size={32}
+      />
     </HStack>
   );
 };
