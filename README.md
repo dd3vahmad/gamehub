@@ -21,7 +21,8 @@ You can install one @nodejs.org (this project uses nodev20)
 All the games and metadata are from RAWG API. Big shoutout to the guys at RAWG.
 Get an API key from [rawg.io](https://rawg.io/apidocs), create a .env at the root of your project.
 
-`VITE_RAWG_API=<YOUR-RAWG-API-KEY-HERE>`
+`VITE_RAWG_BASE_URL=https://api.rawg.io/api`
+`VITE_RAWG_API_KEY=<YOUR-RAWG-API-KEY-HERE>`
 
 #### Run the project
 
